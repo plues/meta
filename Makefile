@@ -4,7 +4,8 @@ modelcmd=git checkout origin/develop
 frontendcmd=git checkout origin/develop
 
 # Use config.mk to override the commands above to build a specific branch, tag or revision
-include config.mk
+-include config.mk
+
 
 dist: clean server/dist
 	@if [ ! -d dist ]; then mkdir dist; fi
