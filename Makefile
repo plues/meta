@@ -9,17 +9,18 @@ frontendcmd=git checkout origin/develop
 
 dist: clean server/dist
 	@if [ ! -d dist ]; then mkdir dist; fi
-	cp -v server/dist/* dist/
+	cp server/dist/* dist/
 
 models/dist: models/checkout
 	$(MAKE) dist -C models
-	cp -rv models/dist server/src/main/resources/models
 
 frontend/dist: frontend/checkout
 	$(MAKE) dist -C frontend
-	cp -rv frontend/dist server/src/main/resources/www
 
 server/dist: server/checkout models/dist frontend/dist
+	$(MAKE) clean -C server
+	cp -r models/dist server/src/main/resources/models
+	cp -r frontend/dist server/src/main/resources/www
 	$(MAKE) dist -C server
 
 # XXX This destroys local changes
@@ -42,11 +43,16 @@ server:
 	if [ ! -d server/.git ]; then git clone git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/server.git; fi
 
 clean:
-	rm -rf dist/*
+	@rm -rf dist/*
+
+ratherclean: clean
+	$(make) clean -C frontend
+	$(make) clean -C models
+	$(make) clean -C server
 
 veryclean: clean
-	rm -rf models 
-	rm -rf fronted 
-	rm -rf server 
+	rm -rf models
+	rm -rf fronted
+	rm -rf server
 
-.PHONY: models/dist frontend/dist server/dist dist models/checkout frontend/checkout server/checkout veryclean clean
+.PHONY: models/dist frontend/dist server/dist dist models/checkout frontend/checkout server/checkout ratherclean veryclean clean
