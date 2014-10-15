@@ -7,6 +7,9 @@ frontendcmd=git checkout origin/develop
 -include config.mk
 
 
+run: clean server/prepare
+	make -C server/ run
+
 dist: clean server/dist
 	@if [ ! -d dist ]; then mkdir dist; fi
 	cp server/dist/* dist/
@@ -17,11 +20,13 @@ models/dist: models/checkout
 frontend/dist: frontend/checkout
 	$(MAKE) dist -C frontend
 
-server/dist: server/checkout models/dist frontend/dist
+server/dist: server/prepare
+	$(MAKE) dist -C server
+
+server/prepare: server/checkout models/dist frontend/dist
 	$(MAKE) clean -C server
 	cp -r models/dist server/src/main/resources/models
 	cp -r frontend/dist server/src/main/resources/www
-	$(MAKE) dist -C server
 
 # XXX This destroys local changes
 models/checkout: models
