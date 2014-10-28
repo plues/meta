@@ -33,9 +33,9 @@ frontendcmd=git checkout origin/develop
 
 ## Running
 
-Extract the zip file (```dist/server-1.0.zip```) and run ```bin/server``` to
+Extract the zip file (```dist/server-<VERSION>.zip```) and run ```bin/server``` to
 start the application. Visit
-[```http://localhost:8080/#/course```](http://localhost:8080/#/course) to use
+[```http://localhost:8080/#/session```](http://localhost:8080/#/session) to use
 the application.
 
 
