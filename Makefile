@@ -1,7 +1,8 @@
 # commands used to get a version of each repository to be used for building
-servercmd=git checkout origin/develop
-modelcmd=git checkout origin/develop
-frontendcmd=git checkout origin/develop
+current_branch=$(shell git rev-parse --abbrev-ref HEAD)
+servercmd=git checkout origin/$(current_branch)
+modelcmd=git checkout origin/$(current_branch)
+frontendcmd=git checkout origin/$(current_branch)
 
 # Use config.mk to override the commands above to build a specific branch, tag or revision
 -include config.mk
