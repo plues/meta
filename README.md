@@ -19,23 +19,23 @@ The resulting ```.zip``` file is placed in __```dist/```__
 
 ### Customizing the Build
 
-By default the state of ```origin/develop``` in each sub-project is used to
-build the artifact. To customize which state of the repositories is used for
-building use the ```config.mk``` file and define following variables to the
-required command for each repository. The configuration to build
-```origin/master``` instead of ```origin/develop``` would look like this:
+By default the current branch of the meta repository is used to build the
+artifacts in each sub-project.  To customize which state of the repositories is
+used for building use the ```config.mk``` file and define following variables
+to the required command for each repository. The configuration to build
+```origin/feature-1``` instead of ```origin/develop``` would look like this:
 
 ```
-servercmd=git checkout origin/develop
-modelcmd=git checkout origin/develop
-frontendcmd=git checkout origin/develop
+servercmd=git checkout origin/feature-1
+modelcmd=git checkout origin/feature-1
+frontendcmd=git checkout origin/feature-1
 ```
 
 ## Running
 
 Extract the zip file (```dist/server-<VERSION>.zip```) and run ```bin/server``` to
 start the application. Visit
-[```http://localhost:8080/#/session```](http://localhost:8080/#/session) to use
+[```http://localhost:8080/```](http://localhost:8080/) to use
 the application.
 
 
