@@ -12,8 +12,9 @@ B models, each developed (more or less) independently.
 Building is done using ```make```.  To create a distributable package run
 
 ```
-make dist
+make dist flavor=<FACULTY>
 ```
+where <FACULTY> is either ```philfak``` or ```wiwi```
 
 The resulting ```.zip``` file is placed in __```dist/```__
 
@@ -33,7 +34,7 @@ frontendcmd=git checkout origin/feature-1
 
 ## Running
 
-Extract the zip file (```dist/server-<VERSION>.zip```) and run ```bin/server``` to
+Extract the zip file (```dist/<FACULTY>-server-<VERSION>.zip```) and run ```bin/server``` to
 start the application. Visit
 [```http://localhost:8080/```](http://localhost:8080/) to use
 the application.
@@ -41,8 +42,8 @@ the application.
 
 ## Conventions
 
-Each sub-project provides a Makefile that defines a ```dist``` rule This rule
-runs everything that is needed to build the project and places the result in
-```dist``` directory. The top-level ```Makefile``` will take the results out of
-```sub-project/dist``` and place them in the correct location to build the
-final artifact.
+Each sub-project provides a Makefile that defines a ```dist``` rule and accepts
+a flavor paramter to customize the build. This rule runs everything that is
+needed to build the project and places the result in ```dist``` directory. The
+top-level ```Makefile``` will take the results out of ```sub-project/dist```
+and place them in the correct location to build the final artifact.
