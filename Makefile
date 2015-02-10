@@ -16,19 +16,21 @@ dist: clean server/dist
 	@if [ ! -d dist ]; then mkdir dist; fi
 	cp server/dist/* dist/
 
+flavor=philfak
 server/dist: server/prepare
-	$(MAKE) dist -C server
+	$(MAKE) dist flavor=$(flavor) -C server
 
 data/dist: data/checkout
-	$(MAKE) dist -C data
+	$(MAKE) dist flavor=$(flavor) -C data
 
 models/dist: models/checkout
-	$(MAKE) dist -C models
+	$(MAKE) dist flavor=$(flavor) -C models
 
 frontend/dist: frontend/checkout
-	$(MAKE) dist -C frontend
+	$(MAKE) dist flavor=$(flavor) -C frontend
 
 server/prepare: server/checkout models/dist data/dist frontend/dist
+
 	$(MAKE) clean -C server
 	cp -r data/dist server/src/main/resources/data
 	cp -r frontend/dist server/src/main/resources/www
