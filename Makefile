@@ -3,6 +3,7 @@ current_branch=$(shell git rev-parse --abbrev-ref HEAD)
 servercmd=git checkout origin/$(current_branch)
 modelcmd=git checkout origin/$(current_branch)
 frontendcmd=git checkout origin/$(current_branch)
+datacmd=git checkout origin/$(current_branch)
 
 # Use config.mk to override the commands above to build a specific branch, tag or revision
 -include config.mk
@@ -15,29 +16,36 @@ dist: clean server/dist
 	@if [ ! -d dist ]; then mkdir dist; fi
 	cp server/dist/* dist/
 
+server/dist: server/prepare
+	$(MAKE) dist -C server
+
+data/dist: data/checkout
+	$(MAKE) dist -C data
+
 models/dist: models/checkout
 	$(MAKE) dist -C models
 
 frontend/dist: frontend/checkout
 	$(MAKE) dist -C frontend
 
-server/dist: server/prepare
-	$(MAKE) dist -C server
-
-server/prepare: server/checkout models/dist frontend/dist
+server/prepare: server/checkout models/dist data/dist frontend/dist
 	$(MAKE) clean -C server
-	cp -r models/dist server/src/main/resources/models
+	cp -r data/dist server/src/main/resources/data
 	cp -r frontend/dist server/src/main/resources/www
+	cp -r models/dist server/src/main/resources/models
 
 # XXX This destroys local changes
 models/checkout: models
-	cd models; git fetch; $(modelcmd)
+	cd $(dir $@); git fetch; $(modelcmd)
 
 frontend/checkout: frontend
-	cd frontend; git fetch; $(frontendcmd)
+	cd $(dir $@); git fetch; $(frontendcmd)
 
 server/checkout: server
-	cd server; git fetch; $(servercmd)
+	cd $(dir $@); git fetch; $(servercmd)
+
+data/checkout: data
+	cd $(dir $@); git fetch; $(datacmd)
 
 models:
 	if [ ! -d models/.git ]; then git clone git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/models.git; fi
@@ -48,17 +56,22 @@ frontend:
 server:
 	if [ ! -d server/.git ]; then git clone git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/server.git; fi
 
+data:
+	if [ ! -d data/.git ]; then git clone git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/data.git; fi
+
 clean:
 	@rm -rf dist/*
 
 ratherclean: clean
+	$(make) clean -C data
 	$(make) clean -C frontend
 	$(make) clean -C models
 	$(make) clean -C server
 
 veryclean: clean
+	rm -rf data
+	rm -rf frontend
 	rm -rf models
-	rm -rf fronted
 	rm -rf server
 
-.PHONY: models/dist frontend/dist server/dist dist models/checkout frontend/checkout server/checkout ratherclean veryclean clean
+.PHONY: models/dist frontend/dist server/dist dist models/checkout frontend/checkout server/checkout ratherclean veryclean clean data/checkout data/dist
