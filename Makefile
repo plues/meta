@@ -30,9 +30,8 @@ frontend/dist: frontend/checkout
 	$(MAKE) dist flavor=$(flavor) -C frontend
 
 server/prepare: server/checkout models/dist data/dist frontend/dist
-
 	$(MAKE) clean -C server
-	cp -r data/dist server/src/main/resources/
+	cp -r data/dist/ server/src/main/resources/
 	cp -r frontend/dist server/src/main/resources/www
 	cp -r models/dist server/src/main/resources/models
 
