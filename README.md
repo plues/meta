@@ -51,7 +51,7 @@ frontendcmd=git checkout origin/feature-1
 
 Extract the zip file (`dist/<FACULTY>-server-<VERSION>.zip`) and run `bin/server` to
 start the application. Visit
-[`http://localhost:8080/`](http://localhost:8080/) to use
+[http://localhost:8080/](http://localhost:8080/) to use
 the application.
 
 
