@@ -20,6 +20,20 @@ The resulting ```.zip``` file is placed in __```dist/```__
 
 ### Customizing the Build
 
+Some options of the build are configured with variables that you can override
+in a file `config.mk`.
+
+#### Repositories
+The urls of the repositories have the following default values:
+
+```
+modelsrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/models.git
+frontendrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/frontend.git
+serverrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/server.git
+datarepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/data.git
+```
+
+#### Branches
 By default the current branch of the meta repository is used to build the
 artifacts in each sub-project.  To customize which state of the repositories is
 used for building use the ```config.mk``` file and define following variables

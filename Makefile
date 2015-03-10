@@ -5,6 +5,11 @@ modelcmd=git checkout origin/$(current_branch)
 frontendcmd=git checkout origin/$(current_branch)
 datacmd=git checkout origin/$(current_branch)
 
+modelsrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/models.git
+frontendrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/frontend.git
+serverrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/server.git
+datarepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/data.git
+
 # Use config.mk to override the commands above to build a specific branch, tag or revision
 -include config.mk
 
@@ -49,16 +54,16 @@ data/checkout: data
 	cd $(dir $@); git fetch; $(datacmd)
 
 models:
-	if [ ! -d models/.git ]; then git clone git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/models.git; fi
+	if [ ! -d models/.git ]; then git clone $(modelsrepo); fi
 
 frontend:
-	if [ ! -d frontend/.git ]; then git clone git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/frontend.git; fi
+	if [ ! -d frontend/.git ]; then git clone $(frontendrepo); fi
 
 server:
-	if [ ! -d server/.git ]; then git clone git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/server.git; fi
+	if [ ! -d server/.git ]; then git clone $(serverrepo); fi
 
 data:
-	if [ ! -d data/.git ]; then git clone git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/data.git; fi
+	if [ ! -d data/.git ]; then git clone $(datarepo); fi
 
 clean:
 	@rm -rf dist/*
