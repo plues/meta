@@ -2,3 +2,5 @@ frontend/
 models/
 server/
 dist
+data/
+config.mk
