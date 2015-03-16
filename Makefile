@@ -1,9 +1,9 @@
 # commands used to get a version of each repository to be used for building
 current_branch=$(shell git rev-parse --abbrev-ref HEAD)
-servercmd=git checkout origin/$(current_branch)
-modelcmd=git checkout origin/$(current_branch)
-frontendcmd=git checkout origin/$(current_branch)
-datacmd=git checkout origin/$(current_branch)
+servercmd=git checkout -f origin/$(current_branch)
+modelcmd=git checkout -f origin/$(current_branch)
+frontendcmd=git checkout -f origin/$(current_branch)
+datacmd=git checkout -f origin/$(current_branch)
 
 modelsrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/models.git
 frontendrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/frontend.git
