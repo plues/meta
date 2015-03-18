@@ -15,7 +15,7 @@ datarepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/data.git
 
 
 run: clean server/prepare
-	make -C server/ run
+	make -C server/ run flavor=$(flavor)
 
 dist: clean server/dist
 	@if [ ! -d dist ]; then mkdir dist; fi
