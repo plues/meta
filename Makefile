@@ -5,10 +5,10 @@ modelcmd=git checkout -f origin/$(current_branch)
 frontendcmd=git checkout -f origin/$(current_branch)
 datacmd=git checkout -f origin/$(current_branch)
 
-modelsrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/models.git
-frontendrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/frontend.git
-serverrepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/server.git
-datarepo=git@gitlab.cobra.cs.uni-duesseldorf.de:slottool/data.git
+modelsrepo=git@tuatara.cs.uni-duesseldorf.de:slottool/models.git
+frontendrepo=git@tuatara.cs.uni-duesseldorf.de:slottool/frontend.git
+serverrepo=git@tuatara.cs.uni-duesseldorf.de:slottool/server.git
+datarepo=git@tuatara.cs.uni-duesseldorf.de:slottool/data.git
 
 # Use config.mk to override the commands above to build a specific branch, tag or revision
 -include config.mk
