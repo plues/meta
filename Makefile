@@ -6,7 +6,7 @@ frontendcmd=git checkout -f origin/$(current_branch)
 datacmd=git checkout -f origin/$(current_branch)
 
 modelsrepo=git@tuatara.cs.uni-duesseldorf.de:slottool/models.git
-frontendrepo=git@tuatara.cs.uni-duesseldorf.de:slottool/frontend.git
+frontendrepo=git@github.com:plues/frontend.git
 serverrepo=git@tuatara.cs.uni-duesseldorf.de:slottool/server.git
 datarepo=git@tuatara.cs.uni-duesseldorf.de:slottool/data.git
 
