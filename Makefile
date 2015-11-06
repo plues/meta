@@ -6,9 +6,9 @@ frontendcmd=git checkout -f origin/$(current_branch)
 datacmd=git checkout -f origin/$(current_branch)
 
 modelsrepo=git@tuatara.cs.uni-duesseldorf.de:slottool/models.git
-frontendrepo=git@github.com:plues/frontend.git
-serverrepo=git@tuatara.cs.uni-duesseldorf.de:slottool/server.git
-datarepo=git@tuatara.cs.uni-duesseldorf.de:slottool/data.git
+frontendrepo=https://github.com/plues/frontend.git
+serverrepo=https://github.com/plues/server.git
+datarepo=https://github.com/plues/data.git
 
 # Use config.mk to override the commands above to build a specific branch, tag or revision
 -include config.mk
