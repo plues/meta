@@ -34,7 +34,6 @@ The URLs of the repositories have the following default values:
 modelsrepo=git@tuatara.cs.uni-duesseldorf.de:slottool/models.git
 frontendrepo=https://github.com/plues/frontend.git
 serverrepo=https://github.com/plues/frontend.git
-datarepo=https://github.com/plues/data.git
 ```
 
 #### Branches
