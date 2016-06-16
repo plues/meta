@@ -32,7 +32,7 @@ frontend/dist: frontend/checkout
 server/prepare: server/checkout models/dist frontend/dist
 	$(MAKE) clean -C server
 	cp -r frontend/dist server/src/main/resources/www
-	cp -r models/dist server/src/main/resources/models
+	cp -r models/dist/models.zip server/src/main/resources/models.zip
 
 # XXX This destroys local changes
 models/checkout: models
