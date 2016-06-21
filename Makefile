@@ -17,7 +17,7 @@ run: clean server/prepare
 
 dist: clean server/dist
 	@if [ ! -d dist ]; then mkdir dist; fi
-	cp server/dist/* dist/
+	cp -rv server/dist/* dist/
 
 flavor=philfak
 server/dist: server/prepare
