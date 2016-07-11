@@ -27,7 +27,7 @@ models/dist: models/checkout
 	$(MAKE) dist flavor=$(flavor) -C models
 
 frontend/dist: frontend/checkout
-	$(MAKE) dist flavor=$(flavor) -C frontend
+	DISABLE_MIRAGE=1 $(MAKE) dist flavor=$(flavor) -C frontend
 
 server/prepare: server/checkout models/dist frontend/dist
 	$(MAKE) clean -C server
