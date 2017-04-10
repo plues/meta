@@ -1,4 +1,5 @@
 #!/bin/sh
+. ./release_config.sh
 
 rm -rf mincer
 git clone git@github.com:plues/mincer.git
@@ -26,5 +27,5 @@ if ! git flow release finish; then exit; fi
 
 if ! bumpversion --verbose minor; then exit; fi
 
-if ! git push origin master:master --tags then exit; fi
-if ! git push origin develop:develop then exit; fi
+if ! git push origin master:master --tags; then exit; fi
+if ! git push origin develop:develop; then exit; fi

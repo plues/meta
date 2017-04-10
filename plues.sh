@@ -1,11 +1,12 @@
 #!/bin/sh
-
 . ./release_config.sh
 
 rm -rf plues
 git clone git@github.com:plues/plues.git
 
 cd plues
+git submodule update --init
+
 git checkout -b master --track origin/master
 if ! git flow init -f -d; then exit; fi
 if ! git flow release start $PLUES_RELEASE; then exit; fi
@@ -23,7 +24,7 @@ sed -itmp -e "s/handbook-url-pdf=.*/handbook-url-pdf=https:\/\/github.com\/plues
 git add src/main/resources/main.properties
 git commit -m 'Updated handbook url.'
 
-sed -itmp -e "s/name: 'de\.prob2\.kernel', version: .*/name: 'de.prob2.kernel', version: '$PROB_VERSION'"
+sed -itmp -e "s/name:'de\.prob2\.kernel', version:.*/name:'de.prob2.kernel', version:'$PROB_VERSION'/" build.gradle
 
 git add build.gradle
 git commit -m 'Updated ProB2 to latest release.'
@@ -47,5 +48,5 @@ git commit -m 'Updated handbook url.'
 
 if ! bumpversion --verbose minor; then exit; fi
 
-git push origin master:master --tags
-git push origin develop:develop
+if ! git push origin master:master --tags; then exit; fi
+if ! git push origin develop:develop; then exit; fi

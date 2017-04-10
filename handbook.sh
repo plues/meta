@@ -1,5 +1,4 @@
 #!/bin/sh
-
 . ./release_config.sh
 
 rm -rf handbook
@@ -30,5 +29,6 @@ sed -itmp -e "s/https:\/\/github.com\/plues\/mincer\/releases\/download\/.*\/min
 sed -itmp -e "s/https:\/\/github.com\/plues\/mincer\/releases\/download\/.*\/mincer-.*-standalone\.jar/https:\/\/www3.hhu.de\/stups\/downloads\/plues\/mincer\/mincer-$MINCER_SNAPSHOT-standalone\.jar/" dokumentation.md
 git add dokumentation.md
 git commit -m "Updated version numbers to snapshot."
-git push origin master:master --tags
-git push origin develop:develop
+
+if ! git push origin master:master --tags; then exit; fi
+if ! git push origin develop:develop; then exit; fi
