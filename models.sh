@@ -37,10 +37,10 @@ git add tests/data/raw/Makefile
 git commit -m 'Updated test dependencies to SNAPSHOT versions.'
 if ! make test-data; then exit; fi
 
+git add tests/data/raw/Makefile
+git commit -m 'Updated test dependencies to development versions.'
 git add tests/data/raw
-git commit -m 'Regenerated test data files.'
-if ! bumpversion --verbose release; then exit; fi
-if ! git flow release finish; then exit; fi
+git commit -m 'Regenerated test files'
 
 (cd data; git checkout develop; git pull)
 git add data
