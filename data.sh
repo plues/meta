@@ -1,8 +1,9 @@
 #!/bin/sh
 . ./release_config.sh
+. ./config.sh
 
 rm -rf data
-git clone git@github.com:plues/data.git
+git clone "${DATA_REPO}"
 
 cd data
 git checkout -b master --track origin/master

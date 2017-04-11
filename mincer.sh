@@ -1,10 +1,11 @@
 #!/bin/sh
 . ./release_config.sh
+. ./config.sh
 
 rm -rf mincer
-git clone git@github.com:plues/mincer.git
+git clone $MINCER_REPO
 
-cd mincer
+cd mincer 
 git checkout -b master --track origin/master
 
 if ! git flow init -f -d; then exit; fi

@@ -1,8 +1,9 @@
 #!/bin/sh
 . ./release_config.sh
+. ./config.sh
 
 rm -rf plues
-git clone git@github.com:plues/plues.git
+git clone "${PLUES_REPO}"
 
 cd plues
 git submodule update --init

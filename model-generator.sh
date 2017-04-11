@@ -1,8 +1,9 @@
 #!/bin/sh
 . ./release_config.sh
+. ./config.sh
 
 rm -rf model-generator
-git clone git@github.com:plues/model-generator.git
+git clone $MODELGENERATOR_REPO
 
 cd model-generator
 git checkout -b master --track origin/master

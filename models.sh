@@ -1,8 +1,9 @@
 #!/bin/sh
 . ./release_config.sh
+. ./config.sh
 
 rm -rf models
-git clone git@github.com:plues/models.git
+git clone "${MODELS_REPO}"
 git submodule update --init
 
 cd models

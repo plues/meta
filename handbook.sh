@@ -1,8 +1,9 @@
 #!/bin/sh
 . ./release_config.sh
+. ./config.sh
 
 rm -rf handbook
-git clone git@github.com:plues/handbook.git
+git clone "${HANDBOOK_REPO}"
 
 cd handbook
 git checkout -b master --track origin/master
