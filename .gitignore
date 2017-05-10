@@ -1,7 +1,9 @@
-frontend/
 models/
-server/
 dist
 data/
+handbook/
+mincer/
+model-generator/
+plues
 config.mk
 artifacts/*
