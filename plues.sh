@@ -1,5 +1,6 @@
 #!/bin/sh
 . ./release_config.sh
+. ./release_util.sh
 . ./config.sh
 
 rm -rf plues
@@ -49,5 +50,4 @@ git commit -m 'Updated handbook url.'
 
 if ! bumpversion --verbose minor; then exit; fi
 
-if ! git push origin master:master --tags; then exit; fi
-if ! git push origin develop:develop; then exit; fi
+push_confirmation "plues"

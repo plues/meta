@@ -1,5 +1,6 @@
 #!/bin/sh
 . ./release_config.sh
+. ./release_util.sh
 . ./config.sh
 
 rm -rf handbook
@@ -31,5 +32,4 @@ sed -itmp -e "s/https:\/\/github.com\/plues\/mincer\/releases\/download\/.*\/min
 git add dokumentation.md
 git commit -m "Updated version numbers to snapshot."
 
-if ! git push origin master:master --tags; then exit; fi
-if ! git push origin develop:develop; then exit; fi
+push_confirmation "handbook"

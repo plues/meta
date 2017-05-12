@@ -1,5 +1,6 @@
 #!/bin/sh
 . ./release_config.sh
+. ./release_util.sh
 . ./config.sh
 
 rm -rf models
@@ -48,5 +49,4 @@ git add data
 git commit -m 'Updated submodule to the latest development version.'
 if ! bumpversion --verbose minor; then exit; fi
 
-if ! git push origin master:master --tags; then exit; fi
-if ! git push origin develop:develop; then exit; fi
+push_confirmation "models"
