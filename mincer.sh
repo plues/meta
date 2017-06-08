@@ -6,7 +6,7 @@
 rm -rf mincer
 git clone $MINCER_REPO
 
-cd mincer 
+cd mincer
 git checkout -b master --track origin/master
 
 if ! git flow init -f -d; then exit; fi
@@ -16,7 +16,7 @@ if ! lein test; then exit; fi
 
 continue_confirmation
 
-if ! bumpversion --verbose release; then exit; fi
+if ! bumpversion --verbose --new-version="${MINCER_RELEASE}" release; then exit; fi
 if ! git flow release finish; then exit; fi
 
 if ! bumpversion --verbose minor; then exit; fi

@@ -11,7 +11,7 @@ git checkout -b master --track origin/master
 
 if ! git flow init -f -d; then exit; fi
 if ! git flow release start $DATA_RELEASE; then exit; fi
-if ! bumpversion release; then exit; fi
+if ! bumpversion --new-version="${DATA_RELEASE}" patch; then exit; fi
 
 sed -itmp -e "s/MODEL_GENERATOR_VERSION=.*/MODEL_GENERATOR_VERSION=$MODEL_GENERATOR_RELEASE/" Makefile
 sed -itmp -e "s/MINCER_VERSION=.*/MINCER_VERSION=$MINCER_RELEASE/" Makefile

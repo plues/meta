@@ -30,7 +30,7 @@ if ! make data.mch solver7_tests tests; then exit; fi
 
 git add tests/data/raw
 git commit -m 'Regenerated test data files.'
-if ! bumpversion --verbose release; then exit; fi
+if ! bumpversion --verbose --new-version="${MODELS_RELEASE}" release; then exit; fi
 if ! git flow release finish; then exit; fi
 
 sed -itmp -e "s/MODEL_GENERATOR_VERSION=.*/MODEL_GENERATOR_VERSION=$MODEL_GENERATOR_SNAPSHOT/" tests/data/raw/Makefile

@@ -15,7 +15,7 @@ if ! ./gradlew check; then exit; fi
 
 continue_confirmation
 
-if ! bumpversion --verbose release; then exit; fi
+if ! bumpversion --verbose --new-version="${MODEL_GENERATOR_RELEASE}" release; then exit; fi
 if ! git flow release finish; then exit; fi
 
 if ! bumpversion --verbose minor; then exit; fi

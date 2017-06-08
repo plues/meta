@@ -11,7 +11,7 @@ git checkout -b master --track origin/master
 if ! git flow init -f -d; then exit; fi
 if ! git flow release start $HANDBOOK_RELEASE; then exit; fi
 
-if ! bumpversion --verbose release; then exit; fi
+if ! bumpversion --verbose --new-version="${HANDBOOK_RELEASE}" release; then exit; fi
 
 sed -itmp -e "s/https:\/\/github.com\/plues\/data\/releases\/tag\/.*))/https:\/\/github.com\/plues\/data\/releases\/tag\/$DATA_RELEASE))/" dokumentation.md
 sed -itmp -e "s/https:\/\/www3.hhu.de\/stups\/downloads\/plues\/mincer\/mincer.*\.exe/https:\/\/github.com\/plues\/mincer\/releases\/download\/$MINCER_RELEASE\/mincer-$MINCER_RELEASE.exe/" dokumentation.md

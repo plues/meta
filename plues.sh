@@ -32,7 +32,7 @@ git add build.gradle
 git commit -m 'Updated ProB2 to latest release.'
 
 if ! ./gradlew clean check -Pheadless=true; then exit; fi
-if ! bumpversion --verbose release; then exit; fi
+if ! bumpversion --verbose --new-version="${PLUES_RELEASE}" release; then exit; fi
 git flow release finish
 
 (cd model-generator; git checkout develop; git pull)
