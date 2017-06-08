@@ -11,6 +11,7 @@ if [ ! -d mincer/.git ]; then git clone $MINCERREPO; fi
 
 cd mincer
 git checkout -b master --track origin/master
+git checkout master
 git pull --rebase
 
 lein uberjar launch4j
@@ -25,6 +26,7 @@ if [ ! -d model-generator/.git ]; then git clone "${MODELGENERATOR_REPO}"; fi
 
 cd model-generator
 git checkout -b master --track origin/master
+git checkout master
 git pull --rebase
 
 ./gradlew buildStandaloneJar
@@ -37,6 +39,7 @@ if [ ! -d data/.git ]; then git clone "${DATA_REPO}"; fi
 
 cd data
 git checkout -b master --track origin/master
+git checkout master
 git pull --rebase
 
 mkdir bin/
@@ -54,6 +57,7 @@ if [ ! -d handbook/.git ]; then git clone "${HANDBOOK_REPO}"; fi
 
 cd handbook
 git checkout -b master --track origin/master
+git checkout master
 git pull --rebase
 
 make
@@ -67,6 +71,7 @@ if [ ! -d models/.git ]; then git clone "${MODELS_REPO}"; fi
 cd models
 git submodule update --init
 git checkout -b master --track origin/master
+git checkout master
 git pull --rebase
 
 make very_clean dist
@@ -81,6 +86,7 @@ if [ ! -d plues/.git ]; then git clone "${PLUES_REPO}"; fi
 cd plues
 git submodule update --init
 git checkout -b master --track origin/master
+git checkout master
 git pull --rebase
 
 cp ../artifacts/models.zip src/main/resources/models.zip
