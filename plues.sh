@@ -26,7 +26,7 @@ sed -itmp -e "s/handbook-url-pdf=.*/handbook-url-pdf=https:\/\/github.com\/plues
 git add src/main/resources/main.properties
 git commit -m 'Updated handbook url.'
 
-sed -itmp -e "s/name:'de\.prob2\.kernel', version:.*/name:'de.prob2.kernel', version:'$PROB_VERSION'/" build.gradle
+sed -itmp -e "s/name: *'de\.prob2\.kernel', version:.*/name:'de.prob2.kernel', version:'$PROB_VERSION'/" build.gradle
 
 git add build.gradle
 git commit -m 'Updated ProB2 to latest release.'
