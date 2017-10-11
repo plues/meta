@@ -3,8 +3,8 @@
 . ./release_util.sh
 . ./config.sh
 
-# rm -rf plues
-# git clone "${PLUES_REPO}"
+rm -rf plues
+git clone "${PLUES_REPO}"
 
 cd plues
 git submodule update --init

@@ -84,8 +84,10 @@ cp models/dist/models.zip artifacts
 if [ ! -d plues/.git ]; then git clone "${PLUES_REPO}"; fi
 
 cd plues
-git submodule update --init
+
 git checkout -b master --track origin/master
+git submodule update --init
+
 git checkout master
 git pull --rebase
 
